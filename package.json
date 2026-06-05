@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
-    "deploy": "npm run build && gh-pages -d out --nojekyll",
+    "deploy": "npm run build --preset github_pages && gh-pages -d .output/public --nojekyll",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {

@@ -19,7 +19,9 @@ const preloadImages = () => {
   }
 };
 
-preloadImages();
+if (import.meta.client) {
+  preloadImages();
+}
 
 export const playSequence = (img: HTMLImageElement) => {
   const frameDuration = totalDuration / frameCount;
@@ -34,10 +36,7 @@ export const playSequence = (img: HTMLImageElement) => {
     elapsed += timestamp - lastTime;
     lastTime = timestamp;
 
-    const frameIndex = Math.min(
-      frameCount,
-      Math.floor((elapsed / totalDuration) * frameCount) + 1,
-    );
+    const frameIndex = Math.min(frameCount, Math.floor((elapsed / totalDuration) * frameCount) + 1);
 
     if (frameIndex !== currentIndex) {
       currentIndex = frameIndex;
